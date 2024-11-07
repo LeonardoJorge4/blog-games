@@ -1,19 +1,10 @@
 'use client';
-import { Header } from '@/components/common/Header';
 import { FeaturedSection } from '@/components/pages/home/FeaturedSection';
 import { HeroCarousel } from '@/components/pages/home/HeroCarousel';
 import { LatestPosts } from '@/components/pages/home/LatestPosts';
 import { MostVisitedSection } from '@/components/pages/home/MostVisitedSection';
-
-type Post = {
-  id: number;
-  title: string;
-  excerpt: string;
-  image: string;
-  category: string;
-  date: string;
-  views: number;
-};
+import AdUnit from '@/components/common/AdUnit';
+import { Post } from '@/@types/Post.types';
 
 const featuredPosts: Post[] = [
   {
@@ -69,42 +60,39 @@ const featuredPosts: Post[] = [
   // ... adicione mais posts
 ];
 
-const Sidebar = () => {
-  return (
-    <div className="space-y-6">
-      <div className="bg-muted p-4 rounded-lg text-center">
-        <p className="text-sm text-muted-foreground">Publicidade</p>
-        <div className="h-[600px] bg-accent/20 mt-2 rounded flex items-center justify-center">
-          Espaço para Anúncio
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <Header />
+    <div className="space-y-8">
+      <AdUnit className="mt-4" />
 
-      <main className="container py-8 space-y-12">
-        {/* Hero Section */}
-        <HeroCarousel posts={featuredPosts} />
+      <HeroCarousel posts={featuredPosts} />
 
-        {/* Layout Principal */}
-        <div>
-          <div className="space-y-12">
-            <FeaturedSection posts={featuredPosts} />
+      <AdUnit />
 
-            <MostVisitedSection posts={featuredPosts} />
+      <div>
+        <div className="space-y-8">
+          <FeaturedSection posts={featuredPosts} />
+          {/* Anúncio entre seções */}
+          <AdUnit />
 
-            <LatestPosts posts={featuredPosts} />
-          </div>
+          <MostVisitedSection posts={featuredPosts} />
+          {/* Anúncio entre seções */}
+          <AdUnit />
 
-          {/* Sidebar */}
-          {/* <Sidebar /> */}
+          <LatestPosts posts={featuredPosts} />
         </div>
-      </main>
+
+        {/* Sidebar com anúncios */}
+        {/* <aside className="space-y-8">
+          <AdUnit variant="square" />
+          <AdUnit
+            variant="vertical"
+            className="sticky top-4"
+          />
+        </aside> */}
+      </div>
+
+      <AdUnit className="mb-8" />
     </div>
   );
 }
