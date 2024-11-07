@@ -67,19 +67,19 @@ export default function Home() {
 
       <HeroCarousel posts={featuredPosts} />
 
-      <AdUnit />
+      {/* <AdUnit /> */}
 
       <div>
         <div className="space-y-8">
           <FeaturedSection posts={featuredPosts} />
           {/* Anúncio entre seções */}
-          <AdUnit />
+          {/* <AdUnit /> */}
+
+          <LatestPosts posts={featuredPosts} />
+          {/* <AdUnit /> */}
 
           <MostVisitedSection posts={featuredPosts} />
           {/* Anúncio entre seções */}
-          <AdUnit />
-
-          <LatestPosts posts={featuredPosts} />
         </div>
 
         {/* Sidebar com anúncios */}

@@ -1,23 +1,30 @@
 'use client';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import Container from '@/components/ui/container';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { 
-  Menu, 
-  Moon, 
-  Search, 
-  Sun, 
+import {
+  Menu,
+  Moon,
+  Search,
+  Sun,
   Home,
   Gamepad2,
   Trophy,
-  Tv,
-  Film,
-  Star
+  User,
+  Settings,
+  LogOut,
+  Heart,
+  BookMarked,
+  Bell,
+  BookOpen,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import React from 'react';
@@ -44,13 +51,70 @@ export function Header() {
     );
   };
 
+  const UserMenu = () => {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="ghost"
+            className="relative h-8 w-8 rounded-full"
+          >
+            <Avatar className="h-8 w-8">
+              <AvatarImage
+                src="https://github.com/shadcn.png"
+                alt="Avatar do usuário"
+              />
+              <AvatarFallback>
+                <User className="h-4 w-4" />
+              </AvatarFallback>
+            </Avatar>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          className="w-56"
+          align="end"
+          forceMount
+        >
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col space-y-1">
+              <p className="text-sm font-medium leading-none">John Doe</p>
+              <p className="text-xs leading-none text-muted-foreground">
+                john.doe@example.com
+              </p>
+            </div>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <User className="mr-2 h-4 w-4" />
+            <span>Perfil</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Heart className="mr-2 h-4 w-4" />
+            <span>Favoritos</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Bell className="mr-2 h-4 w-4" />
+            <span>Notificações</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Settings className="mr-2 h-4 w-4" />
+            <span>Configurações</span>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem className="text-destructive">
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Sair</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  };
+
   const mainNavItems = [
     { label: 'Início', href: '/', icon: Home },
     { label: 'Games', href: '/games', icon: Gamepad2 },
     { label: 'Esports', href: '/esports', icon: Trophy },
-    { label: 'Animes', href: '/animes', icon: Tv },
-    { label: 'Séries', href: '/series', icon: Film },
-    { label: 'Reviews', href: '/reviews', icon: Star },
+    { label: 'Guias', href: '/guias', icon: BookOpen },
   ];
 
   return (
@@ -64,7 +128,7 @@ export function Header() {
               className="flex items-center space-x-2"
             >
               <Gamepad2 className="h-6 w-6" />
-              <span className="font-bold text-xl">GeekBlog</span>
+              <span className="font-bold text-xl">GameTrack</span>
             </a>
           </div>
 
@@ -127,6 +191,7 @@ export function Header() {
               <span className="sr-only">Buscar</span>
             </Button>
             <ThemeToggle />
+            <UserMenu />
           </div>
         </div>
       </Container>
