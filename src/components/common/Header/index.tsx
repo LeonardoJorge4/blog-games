@@ -22,7 +22,6 @@ import {
   Settings,
   LogOut,
   Heart,
-  BookMarked,
   Bell,
   BookOpen,
 } from 'lucide-react';
@@ -114,7 +113,7 @@ export function Header() {
     { label: 'Início', href: '/', icon: Home },
     { label: 'Games', href: '/games', icon: Gamepad2 },
     { label: 'Esports', href: '/esports', icon: Trophy },
-    { label: 'Guias', href: '/guias', icon: BookOpen },
+    //{ label: 'Guias', href: '/guides', icon: BookOpen },
   ];
 
   return (

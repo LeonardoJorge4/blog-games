@@ -1,84 +1,72 @@
 'use client';
 import { Post } from '@/@types/Post.types';
 import AdUnit from '@/components/common/AdUnit';
+import { PageFilters } from '@/components/common/PageFilters';
 import { GameNewsCard } from '@/components/pages/games/GameNewsCard';
-import { Button } from '@/components/ui/button';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Gamepad2,
-  Sword,
-  Car,
-  Ghost,
-  Brain,
+  Trophy,
   Crosshair,
-  Volleyball,
+  Swords,
+  Target,
+  Dices,
 } from 'lucide-react';
 import { useState } from 'react';
-import { PageFilters } from '@/components/common/PageFilters';
 
-const gameNews: Post[] = [
+const esportsNews: Post[] = [
   {
     id: 1,
-    title: 'God of War Ragnarök recebe nova atualização',
-    slug: 'god-of-war-ragnarok-recebe-nova-atualizacao',
+    title: 'LOUD vence Valorant Champions 2024',
+    slug: 'loud-vence-valorant-champions-2024',
     excerpt:
-      'Novo patch traz melhorias de performance e correções de bugs que os jogadores relataram desde o lançamento...',
+      'Equipe brasileira faz história e conquista mais um título internacional...',
     image:
       'https://cdn.awsli.com.br/600x700/1610/1610163/produto/177700788/poster-god-of-war-4-b-d3e21ed2.jpg',
-    category: 'Ação/Aventura',
+    category: 'FPS',
     date: '2024-03-21',
-    views: 1200,
-  },
-  {
-    id: 2,
-    title: 'Final Fantasy VII Rebirth ultrapassa 5 milhões de vendas',
-    slug: 'final-fantasy-vii-rebirth-ultrapassa-5-milhoes-de-vendas',
-    excerpt:
-      'Novo título da Square Enix bate recordes de vendas e se torna um dos jogos mais vendidos da franquia...',
-    image:
-      'https://cdn.awsli.com.br/600x700/1610/1610163/produto/177700788/poster-god-of-war-4-b-d3e21ed2.jpg',
-    category: 'RPG',
-    date: '2024-03-20',
     views: 1500,
   },
   {
-    id: 3,
-    title: 'Novo Forza Motorsport impressiona com gráficos realistas',
-    slug: 'novo-forza-motorsport-impressiona-com-graficos-realistas',
+    id: 2,
+    title: 'Final do Mundial de LoL bate recorde de audiência',
+    slug: 'final-do-mundial-de-lol-bate-recorde-de-audiencia',
     excerpt:
-      'O mais recente título da série Forza estabelece novo padrão para jogos de corrida com visuais impressionantes...',
+      'Decisão entre T1 e JDG ultrapassa marca histórica de espectadores simultâneos...',
     image:
       'https://cdn.awsli.com.br/600x700/1610/1610163/produto/177700788/poster-god-of-war-4-b-d3e21ed2.jpg',
-    category: 'Corrida',
+    category: 'MOBA',
+    date: '2024-03-20',
+    views: 2000,
+  },
+  {
+    id: 3,
+    title: 'FURIA anuncia nova line-up de CS2',
+    slug: 'furia-anuncia-nova-line-up-de-cs2',
+    excerpt:
+      'Organização brasileira reformula equipe visando os principais torneios de 2024...',
+    image:
+      'https://cdn.awsli.com.br/600x700/1610/1610163/produto/177700788/poster-god-of-war-4-b-d3e21ed2.jpg',
+    category: 'FPS',
     date: '2024-03-19',
-    views: 800,
+    views: 1200,
   },
 ];
 
 const filterOptions = [
-  { value: 'all', label: 'Todos os Gêneros', icon: Gamepad2 },
-  { value: 'action', label: 'Ação/Aventura', icon: Sword },
-  { value: 'racing', label: 'Corrida', icon: Car },
-  { value: 'sports', label: 'Esportes', icon: Volleyball },
-  { value: 'horror', label: 'Terror', icon: Ghost },
-  { value: 'puzzle', label: 'Puzzle', icon: Brain },
+  { value: 'all', label: 'Todos os gêneros', icon: Trophy },
   { value: 'fps', label: 'FPS', icon: Crosshair },
+  { value: 'moba', label: 'MOBA', icon: Swords },
+  { value: 'battle-royale', label: 'Battle Royale', icon: Target },
+  { value: 'strategy', label: 'Estratégia', icon: Dices },
 ];
 
-export default function GamesPage() {
+export default function EsportsPage() {
   const [selectedGenre, setSelectedGenre] = useState('all');
   const [view, setView] = useState<'grid' | 'list'>('grid');
 
   const filteredNews =
     selectedGenre === 'all'
-      ? gameNews
-      : gameNews.filter((news) => {
+      ? esportsNews
+      : esportsNews.filter((news) => {
           const genreItem = filterOptions.find((g) => g.value === selectedGenre);
           return news.category === genreItem?.label;
         });
@@ -87,9 +75,10 @@ export default function GamesPage() {
     <div className="space-y-8 py-8">
       {/* Header da página */}
       <div className="flex flex-col gap-4">
-        <h1 className="text-4xl font-bold">Games</h1>
+        <h1 className="text-4xl font-bold">Esports</h1>
         <p className="text-muted-foreground">
-          Fique por dentro das últimas notícias do mundo dos games
+          Acompanhe as últimas notícias do cenário competitivo dos jogos
+          eletrônicos
         </p>
       </div>
 
@@ -100,7 +89,7 @@ export default function GamesPage() {
         filterOptions={filterOptions}
         view={view}
         onViewChange={setView}
-        filterPlaceholder="Selecione um gênero"
+        filterPlaceholder="Selecione uma modalidade"
       />
 
       {/* Anúncio */}
