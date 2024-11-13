@@ -5,6 +5,7 @@ import { Poppins } from 'next/font/google';
 import Footer from '@/components/common/Footer';
 import { Header } from '@/components/common/Header';
 import './globals.css';
+import { FavoritesProvider } from '@/contexts/FavoritesContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -36,13 +37,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          <FavoritesProvider>
+            <Header />
 
-          <main className="flex-1">
-            <Container>{children}</Container>
-          </main>
+            <main className="flex-1">
+              <Container>{children}</Container>
+            </main>
 
-          <Footer />
+            <Footer />
+          </FavoritesProvider>
         </ThemeProvider>
       </body>
     </html>

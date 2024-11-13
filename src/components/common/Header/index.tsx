@@ -23,9 +23,9 @@ import {
   LogOut,
   Heart,
   Bell,
-  BookOpen,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import Link from 'next/link';
 import React from 'react';
 
 export function Header() {
@@ -83,22 +83,28 @@ export function Header() {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Perfil</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Heart className="mr-2 h-4 w-4" />
-            <span>Favoritos</span>
-          </DropdownMenuItem>
+          <Link href="/profile">
+            <DropdownMenuItem className="hover:cursor-pointer">
+              <User className="mr-2 h-4 w-4" />
+              <span>Perfil</span>
+            </DropdownMenuItem>
+          </Link>
+
+          <Link href="/favorites">
+            <DropdownMenuItem className="hover:cursor-pointer">
+              <Heart className="mr-2 h-4 w-4" />
+              <span>Favoritos</span>
+            </DropdownMenuItem>
+          </Link>
+
           <DropdownMenuItem>
             <Bell className="mr-2 h-4 w-4" />
             <span>Notificações</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          {/* <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
             <span>Configurações</span>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
           <DropdownMenuSeparator />
           <DropdownMenuItem className="text-destructive">
             <LogOut className="mr-2 h-4 w-4" />

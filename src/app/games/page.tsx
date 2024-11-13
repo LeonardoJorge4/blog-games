@@ -2,14 +2,6 @@
 import { Post } from '@/@types/Post.types';
 import AdUnit from '@/components/common/AdUnit';
 import { GameNewsCard } from '@/components/pages/games/GameNewsCard';
-import { Button } from '@/components/ui/button';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import {
   Gamepad2,
   Sword,

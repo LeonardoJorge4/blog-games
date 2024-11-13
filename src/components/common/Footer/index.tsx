@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   Mail,
   Info,
+  Gamepad2,
 } from 'lucide-react';
 import Link from 'next/link';
 import Container from '../../ui/container';
@@ -56,7 +57,16 @@ const Footer = () => {
                   className="text-muted-foreground hover:text-primary flex items-center gap-2"
                 >
                   <BookOpen className="h-4 w-4" />
-                  Guias & Dicas
+                  Mais lidas da semana
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/games"
+                  className="text-muted-foreground hover:text-primary flex items-center gap-2"
+                >
+                  <Gamepad2 className="h-4 w-4" />
+                  Games
                 </Link>
               </li>
               <li>
